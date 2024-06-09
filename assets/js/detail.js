@@ -142,27 +142,6 @@ fetchDataFromServer(
       </div>
     `;
 
-    for (const { key, name } of filterVideos(videos)) {
-      const videoCard = document.createElement("div");
-      videoCard.classList.add("video-card");
-
-      videoCard.innerHTML = `
-        <iframe
-          width="500"
-          height="294"
-          src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
-          frameborder="0"
-          allowfullscreen="1"
-          title="${name}"
-          class="img-cover"
-          loading="lazy"
-        ></iframe>
-      `;
-
-      movieDetail.querySelector(".slider-inner").appendChild(videoCard);
-    }
-
-    pageContent.appendChild(movieDetail);
     
   // Inside the fetchDataFromServer callback function
 const playMovieButton = document.createElement("div");
@@ -184,6 +163,29 @@ playMovieButton.addEventListener("click", function() {
 });
 
 movieDetail.appendChild(playMovieButton);  
+
+for (const { key, name } of filterVideos(videos)) {
+      const videoCard = document.createElement("div");
+      videoCard.classList.add("video-card");
+
+      videoCard.innerHTML = `
+        <iframe
+          width="500"
+          height="294"
+          src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
+          frameborder="0"
+          allowfullscreen="1"
+          title="${name}"
+          class="img-cover"
+          loading="lazy"
+        ></iframe>
+      `;
+
+      movieDetail.querySelector(".slider-inner").appendChild(videoCard);
+    }
+
+    pageContent.appendChild(movieDetail);
+    
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
