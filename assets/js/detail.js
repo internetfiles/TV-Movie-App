@@ -164,28 +164,16 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieDetail);
     
-    //vidsrc
   // Inside the fetchDataFromServer callback function
+const playMovieButton = document.createElement("button");
+playMovieButton.textContent = "Play Movie";
+playMovieButton.classList.add("play-movie-button");
+
 playMovieButton.addEventListener("click", function() {
   const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
-
-  const iframe = document.createElement("iframe");
-  iframe.setAttribute("src", movieURL);
-  iframe.setAttribute("width", "800");
-  iframe.setAttribute("height", "450");
-  iframe.setAttribute("frameborder", "0");
-  iframe.setAttribute("allowfullscreen", "");
-
-  // You can append the iframe wherever you want, for example:
-  const modal = document.createElement("div");
-  modal.classList.add("modal");
-  modal.appendChild(iframe);
-
-  document.body.appendChild(modal);
+  window.open(movieURL, "_blank"); // Open the URL in a new tab
+  // Alternatively, you can use a modal or other method to display the iframe.
 });
-
-
-//vidsrc
 
 movieDetail.appendChild(playMovieButton);  
 
