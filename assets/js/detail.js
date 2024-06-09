@@ -165,9 +165,9 @@ fetchDataFromServer(
     pageContent.appendChild(movieDetail);
     
   // Inside the fetchDataFromServer callback function
-const playMovieButton = document.createElement("button");
+const playMovieButton = document.createElement("div");
+playMovieButton.classList.add("title-wrapper", "title-large", "play-movie-button");
 playMovieButton.textContent = "Play Movie";
-playMovieButton.classList.add("play-movie-button");
 
 playMovieButton.addEventListener("click", function() {
   const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
