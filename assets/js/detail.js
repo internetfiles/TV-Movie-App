@@ -150,7 +150,7 @@ fetchDataFromServer(
         <iframe
           width="500"
           height="294"
-          src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
+          src="https://vidsrc.xyz/embed/movie/${id}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de"
           frameborder="0"
           allowfullscreen="1"
           title="${name}"
