@@ -165,17 +165,19 @@ fetchDataFromServer(
     pageContent.appendChild(movieDetail);
     
   // Inside the fetchDataFromServer callback function
-const playMovieButton = document.createElement("button");
-playMovieButton.textContent = "Play Movie";
-playMovieButton.classList.add("play-movie-button");
-
 playMovieButton.addEventListener("click", function() {
   const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
-  window.open(movieURL, "_blank"); // Open the URL in a new tab
-  // Alternatively, you can use a modal or other method to display the iframe.
+
+  const iframe = document.createElement("iframe");
+  iframe.setAttribute("src", movieURL);
+  iframe.setAttribute("width", "800");
+  iframe.setAttribute("height", "450");
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("allowfullscreen", "");
+
+  document.body.appendChild(iframe);
 });
 
-movieDetail.appendChild(playMovieButton);  
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
