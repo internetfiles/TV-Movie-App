@@ -141,11 +141,6 @@ fetchDataFromServer(
         </div>
       </div>
     `;
-// Append the h1 element first
-movieDetail.querySelector(".detail-content").appendChild(titleElement);
-
-// Then append the "Play Movie" button
-movieDetail.appendChild(playMovieButton);
 
     for (const { key, name } of filterVideos(videos)) {
       const videoCard = document.createElement("div");
@@ -188,6 +183,11 @@ playMovieButton.addEventListener("click", function() {
   movieDetail.appendChild(iframe);
 });
 
+// Append the h1 element first
+movieDetail.querySelector(".detail-content").appendChild(titleElement);
+
+// Then append the "Play Movie" button
+movieDetail.appendChild(playMovieButton);
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
