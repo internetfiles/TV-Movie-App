@@ -92,11 +92,6 @@ fetchDataFromServer(
       <div class="detail-box">
         <div class="detail-content">
           <h1 class="heading">${title}</h1>
-// Append the h1 element first
-movieDetail.querySelector(".detail-content").appendChild(titleElement);
-
-// Then append the "Play Movie" button
-movieDetail.appendChild(playMovieButton);
 
           <div class="meta-list">
             <div class="meta-item">
@@ -146,6 +141,11 @@ movieDetail.appendChild(playMovieButton);
         </div>
       </div>
     `;
+// Append the h1 element first
+movieDetail.querySelector(".detail-content").appendChild(titleElement);
+
+// Then append the "Play Movie" button
+movieDetail.appendChild(playMovieButton);
 
     for (const { key, name } of filterVideos(videos)) {
       const videoCard = document.createElement("div");
