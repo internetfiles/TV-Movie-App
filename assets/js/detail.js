@@ -164,26 +164,36 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieDetail);
     
-  //  Inside the fetchDataFromServer callback function
+// Inside the fetchDataFromServer callback function
 const playMovieButton = document.createElement("div");
 playMovieButton.classList.add("title-wrapper", "title-large", "play-movie-button");
 playMovieButton.textContent = "Play Movie";
 
+let moviePlayed = false;
+
 playMovieButton.addEventListener("click", function() {
-  const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
+  if (!moviePlayed) {
+    const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
 
-  // Create an iframe
-  const iframe = document.createElement("iframe");
-  iframe.setAttribute("src", movieURL);
-  iframe.setAttribute("width", "100%");
-  iframe.setAttribute("height", "300px");
-  iframe.setAttribute("frameborder", "0");
+    // Create an iframe
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("src", movieURL);
+    iframe.setAttribute("width", "100%");
+    iframe.setAttribute("height", "300px");
+    iframe.setAttribute("frameborder", "0");
 
-  // Append the iframe to the movieDetail or any other desired parent element
-  movieDetail.appendChild(iframe);
+    // Append the iframe to the movieDetail or any other desired parent element
+    movieDetail.appendChild(iframe);
+
+    moviePlayed = true; // Update moviePlayed to true after playing the movie
+  } else {
+    // If the movie has already been played, do nothing or refresh the movie link here
+    // For example, you can refresh the iframe source with a new movie URL
+    // iframe.setAttribute("src", newMovieURL);
+  }
 });
 
-movieDetail.appendChild(playMovieButton);  
+movieDetail.appendChild(playMovieButton);
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
