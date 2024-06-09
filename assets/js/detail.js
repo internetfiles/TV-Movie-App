@@ -92,6 +92,11 @@ fetchDataFromServer(
       <div class="detail-box">
         <div class="detail-content">
           <h1 class="heading">${title}</h1>
+// Append the h1 element first
+movieDetail.querySelector(".detail-content").appendChild(titleElement);
+
+// Then append the "Play Movie" button
+movieDetail.appendChild(playMovieButton);
 
           <div class="meta-list">
             <div class="meta-item">
@@ -183,7 +188,6 @@ playMovieButton.addEventListener("click", function() {
   movieDetail.appendChild(iframe);
 });
 
-movieDetail.appendChild(playMovieButton);  
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
