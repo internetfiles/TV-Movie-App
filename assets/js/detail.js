@@ -142,29 +142,7 @@ fetchDataFromServer(
       </div>
     `;
 
-    
-  // Inside the fetchDataFromServer callback function
-const playMovieButton = document.createElement("div");
-playMovieButton.classList.add("title-wrapper", "title-large", "play-movie-button");
-playMovieButton.textContent = "Play Movie";
-
-playMovieButton.addEventListener("click", function() {
-  const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
-
-  // Create an iframe
-  const iframe = document.createElement("iframe");
-  iframe.setAttribute("src", movieURL);
-  iframe.setAttribute("width", "100%");
-  iframe.setAttribute("height", "500px");
-  iframe.setAttribute("frameborder", "0");
-
-  // Append the iframe to the movieDetail or any other desired parent element
-  movieDetail.appendChild(iframe);
-});
-
-movieDetail.appendChild(playMovieButton);  
-
-for (const { key, name } of filterVideos(videos)) {
+    for (const { key, name } of filterVideos(videos)) {
       const videoCard = document.createElement("div");
       videoCard.classList.add("video-card");
 
@@ -186,6 +164,26 @@ for (const { key, name } of filterVideos(videos)) {
 
     pageContent.appendChild(movieDetail);
     
+  //  Inside the fetchDataFromServer callback function
+const playMovieButton = document.createElement("div");
+playMovieButton.classList.add("title-wrapper", "title-large", "play-movie-button");
+playMovieButton.textContent = "Play Movie";
+
+playMovieButton.addEventListener("click", function() {
+  const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
+
+  // Create an iframe
+  const iframe = document.createElement("iframe");
+  iframe.setAttribute("src", movieURL);
+  iframe.setAttribute("width", "100%");
+  iframe.setAttribute("height", "300px");
+  iframe.setAttribute("frameborder", "0");
+
+  // Append the iframe to the movieDetail or any other desired parent element
+  movieDetail.appendChild(iframe);
+});
+
+movieDetail.appendChild(playMovieButton);  
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
