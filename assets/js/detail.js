@@ -42,7 +42,6 @@ const getDirectors = function (crewList) {
   return directorList.join(", ");
 };
 
-// returns only trailers and teasers as array
 const filterVideos = function (videoList) {
   return videoList.filter(
     ({ type, site }) =>
@@ -150,7 +149,7 @@ fetchDataFromServer(
         <iframe
           width="500"
           height="294"
-          src="https://vidsrc.xyz/embed/movie/${id}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de"
+          src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
           frameborder="0"
           allowfullscreen="1"
           title="${name}"
@@ -163,12 +162,22 @@ fetchDataFromServer(
     }
 
     pageContent.appendChild(movieDetail);
-
-    fetchDataFromServer(
-      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
-      addSuggestedMovies
-    );
   }
+);
+
+const Trailerfunc = function (id) {
+  return `<iframe style="display:block; margin:0 auto;" id="iframe-embed" width="100%" height="100%" scrolling="no" frameborder="0" class="youtubePlayer" src="https://vidsrc.xyz/embed/movie/${id}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de" allowfullscreen="true" webkitallowfullscreen="true" referrerpolicy="origin" mozallowfullscreen="true"></iframe>`;
+};
+
+let url = document.location.href;
+let fetcid = url.slice(url.indexOf("=") + 1);
+const movieLoad = function () {
+  let trailerHtml = Trailerfunc(fetcid);
+};
+
+fetchDataFromServer(
+  `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
+  addSuggestedMovies
 );
 
 const addSuggestedMovies = function ({ results: movieList }, title) {
