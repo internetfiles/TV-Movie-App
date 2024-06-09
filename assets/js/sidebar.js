@@ -38,7 +38,7 @@ export function sidebar() {
         onClick='getMovieList("with_original_language=en", "English")'
         >English</a
       >
-      <a
+     /*  <a
         href="./movie-list.html"
         menu-close
         class="sidebar-link"
@@ -51,14 +51,15 @@ export function sidebar() {
         class="sidebar-link"
         onClick='getMovieList("with_original_language=bn", "Bengali")'
         >Bengali</a
-      >
+      > */
+      
     </div>
 
     <div class="sidebar-footer">
       <p class="copyright">
-        Copyright 2023
-        <a href="https://github.com/rajeevkrS" class="link"
-          >Rajeev Kumar Sudhansu</a
+        Copyright 2024
+        <a href="https://123movie.win/" class="link"
+          >123Movie.win</a
         >
       </p>
 
