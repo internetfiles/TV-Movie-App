@@ -164,21 +164,26 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieDetail);
     
-    // Inside the fetchDataFromServer callback function
-const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
+  // Inside the fetchDataFromServer callback function
+const playMovieButton = document.createElement("button");
+playMovieButton.textContent = "Play Movie";
+playMovieButton.classList.add("play-movie-button");
 
-// Create the iframe
-const iframe = document.createElement("iframe");
-iframe.setAttribute("src", movieURL);
-iframe.setAttribute("width", "100%");
-iframe.setAttribute("height", "500px");
-iframe.setAttribute("frameborder", "0");
-iframe.style.position = "fixed"; // Make the iframe fixed
+playMovieButton.addEventListener("click", function() {
+  const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
 
-// Get the parent element where the iframe will be appended
-const detailContent = document.querySelector('.detail-content');
-detailContent.appendChild(iframe);
-    
+  // Create an iframe
+  const iframe = document.createElement("iframe");
+  iframe.setAttribute("src", movieURL);
+  iframe.setAttribute("width", "100%");
+  iframe.setAttribute("height", "500px");
+  iframe.setAttribute("frameborder", "0");
+
+  // Append the iframe to the movieDetail or any other desired parent element
+  movieDetail.appendChild(iframe);
+});
+
+movieDetail.appendChild(playMovieButton);  
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
