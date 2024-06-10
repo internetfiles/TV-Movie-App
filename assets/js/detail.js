@@ -179,7 +179,7 @@ playMovieButton.addEventListener("click", function() {
   const iframe = document.createElement("iframe");
   iframe.setAttribute("src", movieURL);
   iframe.setAttribute("width", "100%");
-  iframe.setAttribute("height", "500px");
+  iframe.setAttribute("height", "300px");
   iframe.setAttribute("frameborder", "0");
 
   // Append the iframe to the movieDetail or any other desired parent element
