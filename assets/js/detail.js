@@ -164,7 +164,6 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieDetail);
     
-
 // Inside the fetchDataFromServer callback function
 const playMovieButton = document.createElement("button");
 playMovieButton.textContent = "Play Movie";
@@ -182,12 +181,14 @@ playMovieButton.addEventListener("click", function() {
   iframe.setAttribute("width", "100%");
   iframe.setAttribute("height", "300px");
   iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("allowfullscreen", ""); // Add this line to enable fullscreen mode
 
   // Append the iframe to the movieDetail or any other desired parent element
   movieDetail.appendChild(iframe);
 });
 
-movieDetail.appendChild(playMovieButton); 
+movieDetail.appendChild(playMovieButton);
+
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
