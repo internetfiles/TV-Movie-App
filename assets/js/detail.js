@@ -164,15 +164,7 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieDetail);
     
-  // Inside the fetchDataFromServer callback function
-const playMovieButton = document.createElement("button");
-playMovieButton.textContent = "Play Movie";
-playMovieButton.style.border = "2px solid navy";
-playMovieButton.style.backgroundColor = "transparent";
-playMovieButton.style.padding = "10px 20px";
-playMovieButton.classList.add("play-movie-button", "title-large", "title-wrapper");
-
-playMovieButton.addEventListener("click", function() {
+      playMovieButton.addEventListener("click", function() {
   const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
 
   // Create an iframe
@@ -184,9 +176,10 @@ playMovieButton.addEventListener("click", function() {
 
   // Append the iframe to the movieDetail or any other desired parent element
   movieDetail.appendChild(iframe);
-});
 
-movieDetail.appendChild(playMovieButton);      
+  // Remove the button after clicking
+  this.remove();
+}); 
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
