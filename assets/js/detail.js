@@ -166,12 +166,11 @@ fetchDataFromServer(
     
   // Inside the fetchDataFromServer callback function
 const playMovieButton = document.createElement("button");
-const playMovieButton = document.createElement("button");
 playMovieButton.textContent = "Play Movie";
 playMovieButton.style.border = "2px solid navy";
 playMovieButton.style.backgroundColor = "transparent";
 playMovieButton.style.color = "navy";
-playMovieButton.style.padding = "10px 20px";;
+playMovieButton.style.padding = "10px 20px";
 playMovieButton.classList.add("play-movie-button", "title-large", "title-wrapper");
 
 playMovieButton.addEventListener("click", function() {
