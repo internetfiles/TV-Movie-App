@@ -1,7 +1,7 @@
 "use strict";
 
 import { api_key, fetchDataFromServer } from "./api.js";
-import { createMediaCard } from "./media-card.js"; // Updated import for a generic media card
+import { createMovieCard } from "./movie-card.js";
 import { sidebar } from "./sidebar.js";
 
 export function search() {
@@ -27,8 +27,8 @@ export function search() {
 
     searchTimeout = setTimeout(function () {
       fetchDataFromServer(
-        `https://api.themoviedb.org/3/search/multi?api_key=${api_key}&page=1&include_adult=false&query=${searchField.value}`,
-        function ({ results: mediaList }) {
+        `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&page=1&include_adult=false&query=${searchField.value}`,
+        function ({ results: movieList }) {
           searchWrapper.classList.remove("searching");
           searchResultModal.classList.add("active");
           searchResultModal.innerHTML = ""; //remove old results
@@ -37,17 +37,17 @@ export function search() {
             <p class="label">Result for</p>
             <h1 class="heading">${searchField.value}</h1>
 
-            <div class="media-list">
+            <div class="movie-list">
               <div class="grid-list"></div>
             </div>
           `;
 
-          for (const media of mediaList) {
-            const mediaCard = createMediaCard(media); // Use generic media card function
+          for (const movie of movieList) {
+            const movieCard = createMovieCard(movie);
 
             searchResultModal
               .querySelector(".grid-list")
-              .appendChild(mediaCard);
+              .appendChild(movieCard);
           }
         }
       );
