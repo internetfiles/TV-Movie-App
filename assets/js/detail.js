@@ -43,7 +43,6 @@ const getDirectors = function (crewList) {
 };
 
 
-movieDetail.appendChild(playMovieButton);
 
 // returns only trailers and teasers as array
 const filterVideos = function (videoList) {
@@ -198,7 +197,7 @@ playMovieButton.addEventListener("click", function() {
 });
 
 
-  
+ movieDetail.appendChild(playMovieButton);
  
 
     fetchDataFromServer(
