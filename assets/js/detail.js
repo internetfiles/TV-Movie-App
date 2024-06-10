@@ -164,7 +164,7 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieDetail);
     
-// Inside the fetchDataFromServer callback function
+    // Inside the fetchDataFromServer callback function
 const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
 
 // Create the iframe
@@ -175,8 +175,10 @@ iframe.setAttribute("height", "500px");
 iframe.setAttribute("frameborder", "0");
 iframe.style.position = "fixed"; // Make the iframe fixed
 
-// Append the iframe to the movieDetail or any other desired parent element
-movieDetail.appendChild(iframe);
+// Get the parent element where the iframe will be appended
+const detailContent = document.querySelector('.detail-content');
+detailContent.appendChild(iframe);
+    
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
