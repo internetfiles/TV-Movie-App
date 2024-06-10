@@ -143,33 +143,22 @@ fetchDataFromServer(
     `;
 
     for (const { key, name } of filterVideos(videos)) {
-    const videoCard = document.createElement("div");
-    videoCard.classList.add("video-card");
+      const videoCard = document.createElement("div");
+      videoCard.classList.add("video-card");
 
-    // Your existing code here...
+      videoCard.innerHTML = `
+        <iframe
+          width="500"
+          height="294"
+          src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
+          frameborder="0"
+          allowfullscreen="1"
+          title="${name}"
+          class="img-cover"
+          loading="lazy"
+        ></iframe>
+      `;
 
-    // Inside the loop, after creating videoCard
-    const playMovieButton = document.createElement("button");
-    playMovieButton.textContent = "Play Movie";
-    playMovieButton.classList.add("play-movie-button");
-
-    playMovieButton.addEventListener("click", function() {
-        const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
-
-        // Create an iframe
-        const iframe = document.createElement("iframe");
-        iframe.setAttribute("src", movieURL);
-        iframe.setAttribute("width", "100%");
-        iframe.setAttribute("height", "500px");
-        iframe.setAttribute("frameborder", "0");
-
-        // Append the iframe to the parent of videoCard or any other desired parent element
-        videoCard.appendChild(iframe);
-    });
-
-    videoCard.appendChild(playMovieButton);
-    movieDetail.appendChild(videoCard);
-}
       movieDetail.querySelector(".slider-inner").appendChild(videoCard);
     }
 
