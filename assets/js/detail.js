@@ -133,7 +133,7 @@ fetchDataFromServer(
         </div>
 
         <div class="title-wrapper">
-          <h3 class="title-large">Trailers and Clips</h3>
+          <h3 class="title-large">Trailers</h3>
         </div>
 
         <div class="slider-list">
@@ -167,7 +167,7 @@ fetchDataFromServer(
   // Inside the fetchDataFromServer callback function
 const playMovieButton = document.createElement("button");
 playMovieButton.textContent = "Play Movie";
-playMovieButton.classList.add("play-movie-button");
+playMovieButton.classList.add("play-movie-button, title-large, title-large");
 
 playMovieButton.addEventListener("click", function() {
   const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
