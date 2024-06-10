@@ -43,6 +43,8 @@ const getDirectors = function (crewList) {
 };
 
 
+movieDetail.appendChild(playMovieButton);
+
 // returns only trailers and teasers as array
 const filterVideos = function (videoList) {
   return videoList.filter(
@@ -71,40 +73,7 @@ fetchDataFromServer(
     } = movie;
 
     document.title = `${title} - TV Movie`;
-    
-    
-  // Inside the fetchDataFromServer callback function
-const playMovieButton = document.createElement("div");
-playMovieButton.classList.add("title-wrapper", "title-large", "play-movie-button");
-playMovieButton.textContent = "Play Movie";
-
-let moviePlayed = false;
-
-playMovieButton.addEventListener("click", function() {
-  if (!moviePlayed) {
-    const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
-
-    // Create an iframe
-    const iframe = document.createElement("iframe");
-    iframe.setAttribute("src", movieURL);
-    iframe.setAttribute("width", "100%");
-    iframe.setAttribute("height", "300px");
-    iframe.setAttribute("frameborder", "0");
-
-    // Append the iframe to the movieDetail or any other desired parent element
-    movieDetail.appendChild(iframe);
-
-    moviePlayed = true; // Update moviePlayed to true after playing the movie
-  } else {
-    // If the movie has already been played, do nothing or refresh the movie link here
-    // For example, you can refresh the iframe source with a new movie URL
-    // iframe.setAttribute("src", newMovieURL);
-  }
-});
-
-movieDetail.appendChild(playMovieButton);
-  
-
+          
     const movieDetail = document.createElement("div");
     movieDetail.classList.add("movie-detail");
 
@@ -198,6 +167,39 @@ movieDetail.appendChild(playMovieButton);
 
     pageContent.appendChild(movieDetail);
     
+    
+   // Inside the fetchDataFromServer callback function
+const playMovieButton = document.createElement("div");
+playMovieButton.classList.add("title-wrapper", "title-large", "play-movie-button");
+playMovieButton.textContent = "Play Movie";
+
+let moviePlayed = false;
+
+playMovieButton.addEventListener("click", function() {
+  if (!moviePlayed) {
+    const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
+
+    // Create an iframe
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("src", movieURL);
+    iframe.setAttribute("width", "100%");
+    iframe.setAttribute("height", "300px");
+    iframe.setAttribute("frameborder", "0");
+
+    // Append the iframe to the movieDetail or any other desired parent element
+    movieDetail.appendChild(iframe);
+
+    moviePlayed = true; // Update moviePlayed to true after playing the movie
+  } else {
+    // If the movie has already been played, do nothing or refresh the movie link here
+    // For example, you can refresh the iframe source with a new movie URL
+    // iframe.setAttribute("src", newMovieURL);
+  }
+});
+
+
+  
+ 
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
