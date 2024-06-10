@@ -70,8 +70,7 @@ fetchDataFromServer(
     } = movie;
 
     document.title = `${title} - TV Movie`;
- 
-          
+
     const movieDetail = document.createElement("div");
     movieDetail.classList.add("movie-detail");
 
@@ -163,7 +162,9 @@ fetchDataFromServer(
       movieDetail.querySelector(".slider-inner").appendChild(videoCard);
     }
 
-    pageContent.appendChild(movieDe  // Inside the fetchDataFromServer callback function
+    pageContent.appendChild(movieDetail);
+    
+  // Inside the fetchDataFromServer callback function
 const playMovieButton = document.createElement("button");
 playMovieButton.textContent = "Play Movie";
 playMovieButton.classList.add("play-movie-button");
@@ -183,9 +184,7 @@ playMovieButton.addEventListener("click", function() {
 });
 
 movieDetail.appendChild(playMovieButton);  
-tail);
-    
-    
+
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
       addSuggestedMovies
