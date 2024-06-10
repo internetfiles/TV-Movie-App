@@ -183,7 +183,8 @@ playMovieButton.addEventListener("click", function() {
 });
 
 movieDetail.appendChild(playMovieButton);  
-
+tail);
+    
     
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
