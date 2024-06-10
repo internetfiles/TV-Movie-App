@@ -142,48 +142,50 @@ fetchDataFromServer(
       </div>
     `;
 
-    for (const { key, name } of filterVideos(videos)) {
-      const videoCard = document.createElement("div");
-      videoCard.classList.add("video-card");
+   for (const { key, name } of filterVideos(videos)) {
+    const videoCard = document.createElement("div");
+    videoCard.classList.add("video-card");
 
-      videoCard.innerHTML = `
+    videoCard.innerHTML = `
         <iframe
-          width="500"
-          height="294"
-          src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
-          frameborder="0"
-          allowfullscreen="1"
-          title="${name}"
-          class="img-cover"
-          loading="lazy"
+            width="500"
+            height="294"
+            src="https://www.youtube.com/embed/${key}?theme=dark&color=white&rel=0"
+            frameborder="0"
+            allowfullscreen="1"
+            title="${name}"
+            class="img-cover"
+            loading="lazy"
         ></iframe>
-      `;
+    `;
+
+    const playMovieButton = document.createElement("button");
+    playMovieButton.textContent = "Play Movie";
+    playMovieButton.classList.add("play-movie-button");
+
+    playMovieButton.addEventListener("click", function() {
+        const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
+
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("src", movieURL);
+        iframe.setAttribute("width", "100%");
+        iframe.setAttribute("height", "500px");
+        iframe.setAttribute("frameborder", "0");
+
+        videoCard.removeChild(playMovieButton); // Remove the button after click
+
+        videoCard.appendChild(iframe);
+    });
+
+    videoCard.appendChild(playMovieButton);
+    movieDetail.appendChild(videoCard);
+}
 
       movieDetail.querySelector(".slider-inner").appendChild(videoCard);
     }
 
     pageContent.appendChild(movieDetail);
     
-  // Inside the fetchDataFromServer callback function
-const playMovieButton = document.createElement("button");
-playMovieButton.textContent = "Play Movie";
-playMovieButton.classList.add("play-movie-button");
-
-playMovieButton.addEventListener("click", function() {
-  const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
-
-  // Create an iframe
-  const iframe = document.createElement("iframe");
-  iframe.setAttribute("src", movieURL);
-  iframe.setAttribute("width", "100%");
-  iframe.setAttribute("height", "500px");
-  iframe.setAttribute("frameborder", "0");
-
-  // Append the iframe to the movieDetail or any other desired parent element
-  movieDetail.appendChild(iframe);
-});
-
-movieDetail.appendChild(playMovieButton);  
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
