@@ -184,7 +184,7 @@ playMovieButton.addEventListener("click", function() {
   iframe.setAttribute("allowfullscreen", ""); // Add this line to enable fullscreen mode
 
   // Append the iframe to the movieDetail or any other desired parent element
-  movieDetail.appendChild(iframe);
+  movieDetail.querySelector(".slider-inner").appendChild(iframe);
 });
 
 movieDetail.appendChild(playMovieButton);
