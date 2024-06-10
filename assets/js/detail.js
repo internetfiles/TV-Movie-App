@@ -142,17 +142,6 @@ fetchDataFromServer(
       </div>
     `;
 
-// Create the iframe
-const iframe = document.createElement("iframe");
-iframe.setAttribute("src", movieURL);
-iframe.setAttribute("width", "100%");
-iframe.setAttribute("height", "300px");
-iframe.setAttribute("frameborder", "0");
-iframe.style.position = "fixed"; // Make the iframe fixed
-
-// Append the iframe to the movieDetail or any other desired parent element
-movieDetail.appendChild(iframe);
-
     for (const { key, name } of filterVideos(videos)) {
       const videoCard = document.createElement("div");
       videoCard.classList.add("video-card");
@@ -178,6 +167,16 @@ movieDetail.appendChild(iframe);
 // Inside the fetchDataFromServer callback function
 const movieURL = `https://vidsrc.xyz/embed/movie/${movieId}?sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`;
 
+// Create the iframe
+const iframe = document.createElement("iframe");
+iframe.setAttribute("src", movieURL);
+iframe.setAttribute("width", "100%");
+iframe.setAttribute("height", "500px");
+iframe.setAttribute("frameborder", "0");
+iframe.style.position = "fixed"; // Make the iframe fixed
+
+// Append the iframe to the movieDetail or any other desired parent element
+movieDetail.appendChild(iframe);
 
     fetchDataFromServer(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
